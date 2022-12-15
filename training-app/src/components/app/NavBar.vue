@@ -10,7 +10,7 @@
 
             <ul class="right hide-on-small-and-down">
                 <li>
-                    <a class="dropdown-trigger black-text" href="#" data-target="dropdown">
+                    <a class="dropdown-trigger black-text" href="#" data-target="dropdown" ref="dropdown">
                         USER NAME
                         <i class="material-icons right">arrow_drop_down</i>
                     </a>
@@ -36,6 +36,11 @@
 
 <script>
   export default {
-    emits: ['click']
+    emits: ['click'],
+    mounted() {
+        window.M.Dropdown.init(this.$refs.dropdown, {
+            constrainWidth: true
+        })
+    }
   }
 </script>
