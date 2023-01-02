@@ -1,5 +1,5 @@
 <template>
-    <form class="card auth-card">
+    <form class="card auth-card" @submit.prevent="submitHandler">
         <div class="card-content">
             <span class="card-title">Домашняя бухгалтерия</span>
             <div class="input-field">
@@ -23,9 +23,28 @@
     
             <p class="center">
                 Нет аккаунта?
-                <a href="/">Зарегистрироваться</a>
+                <router-link to="/register">Зарегистрироваться</router-link>
             </p>
         </div>
     </form>
 
 </template>
+
+<script>
+
+    import { useVuelidate } from '@vuelidate/core'
+    // import { required, email } from '@vuelidate/validators'
+
+    export default {
+        name: "loginPage",
+        setup () {
+            return { v$: useVuelidate() }
+        },
+
+        methods: {
+            submitHandler() {
+                this.$router.push('/')
+            }
+        }
+    }
+</script>
