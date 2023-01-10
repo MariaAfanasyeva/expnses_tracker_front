@@ -62,6 +62,7 @@
 
     import { useVuelidate } from '@vuelidate/core'
     import { required, email, minLength } from '@vuelidate/validators'
+    import messages from '../utils/message_plugin/messages'
 
     export default {
         name: "loginPage",
@@ -76,10 +77,13 @@
         setup () {
             return { v$: useVuelidate() }
         },
-
+        mounted() {
+            if (messages[this.$route.query.message]) {
+                this.$message(messages[this.$route.query.message])
+            }
+        },
         methods: {
             submitHandler() {
-                console.log(this.v$.password.minLength)
                 if (this.v$.$invalid) {
                     this.v$.$touch()
                     return
