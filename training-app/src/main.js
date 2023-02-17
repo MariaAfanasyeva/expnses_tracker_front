@@ -15,7 +15,8 @@ const firebaseConfig = {
   storageBucket: "vue-expenses-track.appspot.com",
   messagingSenderId: "419651291774",
   appId: "1:419651291774:web:3fd8e0c492e575a3c0262f",
-  measurementId: "G-6TJ1B4DM6V"
+  measurementId: "G-6TJ1B4DM6V",
+  databaseURL: "https://vue-expenses-track-default-rtdb.firebaseio.com",
 };
 // Initialize Firebase Authentication and get a reference to the service
 const firebaseApp = initializeApp(firebaseConfig);
