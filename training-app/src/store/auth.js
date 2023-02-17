@@ -5,7 +5,6 @@ export default {
     actions: {
         // eslint-disable-next-line no-unused-vars
         async login({dispatch, commit}, {email, password}) {
-            // eslint-disable-next-line no-useless-catch
             try {
                 const auth = getAuth()
                 await signInWithEmailAndPassword(auth, email, password)
@@ -14,13 +13,12 @@ export default {
                 throw e
             }
         },
-        async logout() {
+        async logout({commit}) {
             const auth = getAuth()
             await signOut(auth)
+            commit('clearInfo')
         },
-        // eslint-disable-next-line no-unused-vars
         async register({dispatch, commit}, {email, password, name}) {
-            // eslint-disable-next-line no-useless-catch
             try {
                 const database = getDatabase()
                 const auth = getAuth()

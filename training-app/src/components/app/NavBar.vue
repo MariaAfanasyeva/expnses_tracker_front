@@ -11,7 +11,7 @@
             <ul class="right hide-on-small-and-down">
                 <li>
                     <a class="dropdown-trigger black-text" href="#" data-target="dropdown" ref="dropdown">
-                        USER NAME
+                        {{ name }}
                         <i class="material-icons right">arrow_drop_down</i>
                     </a>
 
@@ -55,6 +55,9 @@
                 year: 'numeric'
             }
             return new Intl.DateTimeFormat('ru-RU', options).format(new Date())
+        },
+        name() {
+            return this.$store.getters.info.name
         }
     },
     emits: ['click'],
