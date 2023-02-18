@@ -14,6 +14,16 @@ export default createStore({
       state.error = null
     }
   },
+  actions: {
+    async fetchCurrency() {
+      const key = process.env.VUE_APP_FIXER
+      const res = await fetch(`https://api.apilayer.com/fixer/latest&symbols=USD,EUR,BYN`, {
+        headers: {
+          'apikey': key
+      }})
+      return await res.json()
+    }
+  },
   getters: {
     error: s => s.error
   },

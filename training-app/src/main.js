@@ -3,6 +3,7 @@ import messagePlugin from './utils/message_plugin/index.js';
 import App from './App.vue'
 import router from './router/index.js'
 import store from './store/index.js'
+import Loader from './components/app/LoaderVue'
 import 'materialize-css/dist/js/materialize.min'
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
@@ -25,7 +26,7 @@ const auth = getAuth(firebaseApp)
 let app 
 auth.onAuthStateChanged( () => {
     if (!app){
-        app = createApp(App).use(messagePlugin).use(router).use(store).mount('#app');
+        app = createApp(App).component('Loader', Loader).use(messagePlugin).use(router).use(store).mount('#app');
     }
     
 })
