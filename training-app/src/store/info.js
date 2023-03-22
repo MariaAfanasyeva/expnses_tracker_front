@@ -23,9 +23,6 @@ export default {
                     const data = snapshot.val();
                     commit('setInfo', data)
                   });
-                // const info = (await once(reference, 'value')).val()
-                // console.log(info)
-                // commit('setInfo', info)
             } catch(e) {
                 throw e
             }

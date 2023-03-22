@@ -4,10 +4,12 @@
             <h3>Категории</h3>
         </div>
         <section>
-            <div class="row">
+            <Loader v-if="loading"/>
+            <div class="row" v-else >
                 <CategoryCreate @created="addNewCategory"/>
 
-                <CategoryEdit />
+                <CategoryEdit 
+                :categories="categories"/>
             </div>
         </section>
     </div>
@@ -20,13 +22,20 @@ import CategoryEdit from '@/components/CategoryEdit.vue'
 export default {
     name: 'categoriesView',
     data: () => ({
-        categories: []
+        categories: [],
+        loading: true
     }),
+    async mounted() {
+        this.categories = await this.$store.dispatch('fetchCategories')
+        console.log(this.categories)
+        this.loading = false
+    },
     components: {
         CategoryCreate, CategoryEdit
     },
     methods: {
         addNewCategory(category) {
+            console.log(this.categories)
             this.categories.push(category)
         }
     }
